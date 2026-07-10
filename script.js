@@ -1,263 +1,38 @@
-/* =========================
-   RESET & BASE
-========================= */
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+// JavaScript for toggling mobile menu
+document.addEventListener('DOMContentLoaded', () => {
+  console.log("JavaScript is working!");
+  const menuToggle = document.querySelector('.menu-toggle');
+  const navLinks = document.querySelector('.nav-links');
 
-/* =========================
-   NEW FONT SYSTEM
-========================= */
+  if (menuToggle && navLinks) {
+    menuToggle.addEventListener('click', () => {
+      navLinks.classList.toggle('show');
+    });
+  }
 
-body {
-  font-family: 'Inter', sans-serif;
-  line-height: 1.6;
-  color: black; /* Default text color to white on dark background */
-  background-color: #f8fbf8; /* default background, overridden below for other pages */
-}
-
-/* Change background color for all pages except homepage and contact page */
-body:not(.homepage):not(.contactpage) {
-  background-color: #dbd5d5; /* black background */
-  color: #fff; /* white text for all content */
-}
-
-/* Add specific style for About Us page */
-body.about-us {
-  background-color: #000; /* black background for About Us page */
-  color: #fff; /* white text */
-}
-
-/* Headings */
-h1, h2, h3 {
-  font-family: 'Poppins', sans-serif;
-  font-weight: 700;
-  color: #ffffff; /* default color for headings */
-}
-
-/* Different colors for headings on non-home/contact pages */
-body:not(.homepage):not(.contactpage) h1,
-body:not(.homepage):not(.contactpage) h2,
-body:not(.homepage):not(.contactpage) h3 {
-  color: #ffcc00; /* bright color for headings on dark background */
-}
-
-/* Headings on homepage and contact page */
-body.homepage h1,
-body.homepage h2,
-body.homepage h3,
-body.contactpage h1,
-body.contactpage h2,
-body.contactpage h3 {
-  color: inherit;
-}
-
-/* Links */
-a {
-  text-decoration: none;
-  color: #66cccc; /* bright cyan for links */
-}
-
-/* Images */
-img {
-  max-width: 100%;
-  height: auto;
-}
-
-/* =========================
-   COLORS
-========================= */
-:root {
-  --deep-teal: #006666;
-  --light-teal: #66cccc;
-  --White-: #White;
-}
-
-/* =========================
-   CONTAINER
-========================= */
-.container {
-  width: 90%;
-  max-width: 1200px;
-  margin: auto;
-}
-
-/* =========================
-   HEADER
-========================= */
-header {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-  z-index: 999;
-}
-
-.nav-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px 20px;
-}
-
-.nav-links {
-  list-style: none;
-  display: flex;
-}
-
-.nav-links li {
-  margin-left: 20px;
-}
-
-.nav-links li a {
-  padding: 8px 12px;
-  transition: 0.3s;
-  color: #000; /* default link color */
-}
-
-.nav-links li a:hover {
-  background: var(--light-teal);
-  border-radius: 4px;
-}
-
-/* Menu toggle for mobile */
-.menu-toggle {
-  display: none;
-  font-size: 24px;
-  cursor: pointer;
-}
-
-/* =========================
-   HERO with background slideshow
-========================= */
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  animation: slideBackground 10s infinite; /* added infinite for continuous loop */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Keyframes for background slideshow */
-@keyframes slideBackground {
-  0% { background-image: url('jpg.1.jpg'); }
-  16.66% { background-image: url('jpg.15.jpg'); }
-  33.33% { background-image: url('jpg.003.jpg'); }
-  50% { background-image: url('jpg002.jpg'); }
-  66.66% { background-image: url('opande22.jpg.'); }
-  83.33% { background-image: url('jpg.1980.png'); }
-  100% { background-image: url('jpg.1.jpg'); } /* reset to start for loop */
-}
-
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
-  padding: 50px 20px;
-  text-align: center;
-  max-width: 800px;
-  margin: auto;
-}
-
-.hero h1 {
-  font-family: 'Montserrat', sans-serif;
-  font-size: 2.5em;
-  margin-bottom: 20px;
-  color: #fff;
-}
-
-.hero p {
-  font-size: 1.2em;
-  color: #fff;
-  margin-bottom: 30px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 12px 25px;
-  background-color: var(--deep-teal);
-  color: #fff;
-  text-decoration: none;
-  border-radius: 8px;
-  font-weight: bold;
-}
-
-/* About Us slideshow section styles */
-.about-image {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.about-image .slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out; /* transition duration for fade effect */
-}
-
-.about-image .slide.active {
-  opacity: 1;
-}
-
-/* Other styles remain unchanged... */
-
-/* Background slideshow for the hero section */
-@keyframes slideBackground {
-  0% { background-image: url('jpg.1.jpg'); }
-  16.66% { background-image: url('jpg.15.jpg'); }
-  33.33% { background-image: url('jpg.003.jpg'); }
-  50% { background-image: url('jpg002.jpg'); }
-  66.66% { background-image: url('opande22.jpg.'); }
-  83.33% { background-image: url('jpg.1980.png'); }
-  100% { background-image: url('jpg.1.jpg'); }
-}
-
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  animation: slideBackground 10s infinite;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-}
-
-/* Styles for the about-image slider */
-.about-image {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
-}
-
-.about-image .slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
-}
-
-.about-image .slide.active {
-  opacity: 1;
-}
+  // Slideshow for About Us images
+  const slides = document.querySelectorAll(".about-image .slide");
+  console.log("Slides found:", slides.length);
+  if (slides.length > 0) {
+    let current = 0;
+    setInterval(() => {
+      console.log("Changing to slide:", current);
+      slides[current].classList.remove("active");
+      current = (current + 1) % slides.length;
+      slides[current].classList.add("active");
+    }, 3000); // 3 seconds per slide
+  }
+});
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const slides = document.querySelectorAll('.about-image .slide');
+    if (slides.length > 0) {
+      let current = 0;
+      setInterval(() => {
+        slides[current].classList.remove('active'); // Hide current slide
+        current = (current + 1) % slides.length;    // Move to next slide
+        slides[current].classList.add('active');    // Show next slide
+      }, 3000); // Change slide every 3 seconds
+    }
+  });
+</script>
