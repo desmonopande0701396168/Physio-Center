@@ -5,8 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     <title>Contact Us - Physiotherapy & Sports Injury Center</title>
     <!-- Font Awesome and Google Fonts -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cloudflare.com"/>
+    <link href="https://googleapis.com" rel="stylesheet"/>
     <!-- Favicon -->
     <link rel="icon" href="logo.jpg" type="image/jpeg" />
     <style>
@@ -33,7 +33,7 @@
         .content-wrapper > div { flex: 1 1 300px; }
 
         /* Forms */
-        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; }
+        .contact-form input, .contact-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 5px; font-family: inherit; }
         .contact-form button { padding: 12px 20px; background-color: #009999; color: white; border: none; border-radius: 5px; cursor: pointer; font-weight: bold; transition: background 0.3s; }
         .contact-form button:hover { background-color: #007777; }
 
@@ -78,11 +78,12 @@
             <!-- Contact Form -->
             <div>
                 <h3>Send us a message</h3>
-                <form class="contact-form" action="#" method="post">
-                    <input type="text" placeholder="Name" required />
-                    <input type="email" placeholder="Email" required />
-                    <input type="tel" placeholder="Phone" />
-                    <textarea rows="5" placeholder="Your message" required></textarea>
+                <!-- ACTION STEP REQUIRED BELOW: Replace YOUR_UNIQUE_FORM_ID with your real ID from Formspree -->
+                <form class="contact-form" action="https://formspree.io" method="post">
+                    <input type="text" name="name" placeholder="Name" required />
+                    <input type="email" name="email" placeholder="Email" required />
+                    <input type="tel" name="phone" placeholder="Phone" />
+                    <textarea rows="5" name="message" placeholder="Your message" required></textarea>
                     <button type="submit">Send Message</button>
                 </form>
             </div>
@@ -91,7 +92,7 @@
             <div>
                 <h3>Our Location</h3>
                 <!-- Embedded Google Map -->
-                <iframe src="https://www.google.com/maps?q=Nairobi%20Mathare%204A&output=embed" width="100%" height="250" style="border:0; border-radius: 8px; margin-bottom:15px;" allowfullscreen="" loading="lazy"></iframe>
+                <iframe src="https://google.com" width="100%" height="250" style="border:0; border-radius: 8px; margin-bottom:15px;" allowfullscreen="" loading="lazy"></iframe>
                 <p><strong>Address:</strong> Nairobi - Mathare 4A</p>
                 <p><strong>Phone:</strong> +254 701396168</p>
                 <p><strong>Email:</strong> desmonopande@gmail.com</p>
@@ -125,8 +126,9 @@
             
             <div class="newsletter">
                 <h3>Newsletter</h3>
-                <form style="display: flex;">
-                    <input type="email" placeholder="Your email" required />
+                <!-- ACTION STEP REQUIRED BELOW: You can apply the same Formspree logic here if you want newsletter signups emailed to you! -->
+                <form style="display: flex;" action="https://formspree.io" method="post">
+                    <input type="email" name="subscriber_email" placeholder="Your email" required />
                     <button type="submit">Subscribe</button>
                 </form>
             </div>
