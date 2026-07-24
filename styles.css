@@ -8,43 +8,42 @@
 }
 
 /* =========================
-   NEW FONT SYSTEM
+   FONT & BODY
 ========================= */
-
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
-  color: black; /* Default text color to white on dark background */
-  background-color: #f8fbf8; /* default background, overridden below for other pages */
+  color: black; /* Default text color */
+  background-color: #f8fbf8; /* Default background */
 }
 
-/* Change background color for all pages except homepage and contact page */
+/* Change background and text color for all pages except homepage and contact page */
 body:not(.homepage):not(.contactpage) {
-  background-color: #dbd5d5; /* black background */
-  color: #fff; /* white text for all content */
+  background-color: #dbd5d5; /* Gray background for other pages */
+  color: #fff;
 }
 
-/* Add specific style for About Us page */
+/* About Us page style */
 body.about-us {
-  background-color: #000; /* black background for About Us page */
-  color: #fff; /* white text */
+  background-color: #000;
+  color: #fff;
 }
 
-/* Headings */
+/* Headings styles */
 h1, h2, h3 {
   font-family: 'Poppins', sans-serif;
   font-weight: 700;
-  color: #ffffff; /* default color for headings */
+  color: #ffffff;
 }
 
-/* Different colors for headings on non-home/contact pages */
+/* Headings on non-home/contact pages */
 body:not(.homepage):not(.contactpage) h1,
 body:not(.homepage):not(.contactpage) h2,
 body:not(.homepage):not(.contactpage) h3 {
-  color: #ffcc00; /* bright color for headings on dark background */
+  color: #ffcc00;
 }
 
-/* Headings on homepage and contact page */
+/* Headings on homepage and contact page inherit default colors */
 body.homepage h1,
 body.homepage h2,
 body.homepage h3,
@@ -57,13 +56,28 @@ body.contactpage h3 {
 /* Links */
 a {
   text-decoration: none;
-  color: #66cccc; /* bright cyan for links */
+  color: #66cccc;
 }
 
-/* Images */
+/* Images with blur effect, and optional darkening overlay with fade */
 img {
   max-width: 100%;
   height: auto;
+  filter: blur(8px); /* Existing blur effect */
+  transition: filter 1s ease, opacity 1s ease; /* Transition for darkening effect */
+}
+
+/* Add this class to images you want to darken with fade effect */
+img.darken-img {
+  /* Initial state: slightly bright, with transition */
+  filter: brightness(70%);
+  opacity: 0.9;
+}
+
+img.darken-img:hover {
+  /* Darker on hover to show dark fade effect */
+  filter: brightness(50%);
+  opacity: 0.8;
 }
 
 /* =========================
@@ -72,7 +86,7 @@ img {
 :root {
   --deep-teal: #006666;
   --light-teal: #66cccc;
-  --White-: #White;
+  --White-: #FFFFFF;
 }
 
 /* =========================
@@ -85,48 +99,62 @@ img {
 }
 
 /* =========================
-   HEADER
+   HEADER AND NAVBAR
 ========================= */
 header {
   position: fixed;
   top: 0;
   width: 100%;
   background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
   z-index: 999;
+  height: 60px; /* Fixed height for navbar */
 }
 
 .nav-container {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px 20px;
+  padding: 8px 20px; /* Padding for spacing */
+  height: 40px; /* Match header height */
 }
 
+/* Logo styling */
+.site-logo {
+  width: 50px; /* Smaller logo size, adjust if needed */
+  height: auto;
+}
+
+/* Navigation links list */
 .nav-links {
   list-style: none;
   display: flex;
+  align-items: center;
 }
 
+/* List items in nav */
 .nav-links li {
-  margin-left: 20px;
+  margin-left: 15px;
 }
 
+/* Nav links styling, smaller font and padding */
 .nav-links li a {
-  padding: 8px 12px;
+  padding: 4px 8px; /* Smaller padding for links */
+  font-size: 13px;   /* Smaller font size */
+  line-height: 1.4;
   transition: 0.3s;
-  color: #000; /* default link color */
+  color: #000;
 }
 
+/* Hover effect for nav links */
 .nav-links li a:hover {
   background: var(--light-teal);
   border-radius: 4px;
 }
 
-/* Menu toggle for mobile */
+/* Menu toggle for mobile, if used */
 .menu-toggle {
-  display: none;
-  font-size: 24px;
+  font-size: 18px; /* Smaller icon size */
   cursor: pointer;
 }
 
@@ -137,7 +165,7 @@ header {
   height: 100vh;
   background-size: cover;
   background-position: center;
-  animation: slideBackground 10s infinite; /* added infinite for continuous loop */
+  animation: slideBackground 14s infinite;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -145,36 +173,45 @@ header {
 }
 
 /* Keyframes for background slideshow */
-keyframes slideBackground {
-    0% { background-image: url('jpg.1.jpg'); }
-    16.66% { background-image: url('jpg.15.jpg'); }
-    33.33% { background-image: url('jpg.003.jpg'); }
-    50% { background-image: url('jpg002.jpg'); }
-    83.33% { background-image: url('jpg.1980.png'); }
-    1o0% { background-image: url('jpg.1.jpg'); } for loop */
+@keyframes slideBackground {
+  0% { background-image: url('jpg.1.jpg'); }
+  50% { background-image: url('jpg.3.jpg'); }
+  100% { background-image: url('jpg.1.jpg'); }
 }
 
-.hero-overlay {
-  background-color: rgba(0, 0, 0, 0.5);
+/* Overlay to darken and blur background for readability */
+.hero::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(2px);
+  z-index: 1;
+}
+
+/* Content inside hero, above overlay */
+.hero > .hero-overlay {
+  position: relative;
+  z-index: 2;
   padding: 50px 20px;
-  text-align: center;
   max-width: 800px;
   margin: auto;
+  text-align: center;
+  color: #fff;
 }
 
 .hero h1 {
   font-family: 'Montserrat', sans-serif;
   font-size: 2.5em;
   margin-bottom: 20px;
-  color: #fff;
 }
 
 .hero p {
   font-size: 1.2em;
-  color: #fff;
   margin-bottom: 30px;
 }
 
+/* Buttons styling */
 .btn {
   display: inline-block;
   padding: 12px 25px;
@@ -185,7 +222,7 @@ keyframes slideBackground {
   font-weight: bold;
 }
 
-/* About Us slideshow section styles */
+/* About Us Image Slider */
 .about-image {
   position: relative;
   width: 100%;
@@ -204,57 +241,74 @@ keyframes slideBackground {
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out; /* transition duration for fade effect */
+  transition: opacity 5s ease-in-out;
 }
 
 .about-image .slide.active {
-  opacity: 1;
+  opacity: 0;
 }
 
-/* Other styles remain unchanged... */
-
-/* Background slideshow for the hero section */
-keyframes slideBackground {
-    0% { background-image: url('jpg.1.jpg'); }
-    16.66% { background-image: url('jpg.15.jpg'); }
-    33.33% { background-image: url('jpg.003.jpg'); }
-    50% { background-image: url('jpg002.jpg'); }
-    83.33% { background-image: url('jpg.1980.png'); }
-    1o0% { background-image: url('jpg.1.jpg'); }
-
-.hero {
-  height: 100vh;
-  background-size: cover;
-  background-position: center;
-  animation: slideBackground 10s infinite;
+/* Footer top layout */
+.footer-top {
   display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding: 20px;
+  background-color: #222;
 }
 
-/* Styles for the about-image slider */
-.about-image {
-  position: relative;
-  width: 100%;
-  max-width: 600px;
-  height: 400px;
-  margin: auto;
-  overflow: hidden;
-  border-radius: 8px;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+/* Footer columns styling */
+.footer-column {
+  flex: 1 1 250px; /* grow, shrink, basis */
+  margin: 10px;
 }
 
-.about-image .slide {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+.footer-column h3 {
+  color: #fff;
+  margin-bottom: 10px;
 }
 
-.about-image .slide.active {
-  opacity: 1;
+.footer-column p,
+.footer-column ul {
+  color: #fff;
+  margin-bottom: 8px;
+  list-style: none;
+  padding: 0;
+}
+
+.footer-column ul li {
+  margin-bottom: 8px;
+}
+
+.footer-column ul li a {
+  color: #fff;
+  text-decoration: none;
+}
+
+.footer-column ul li a:hover {
+  text-decoration: underline;
+}
+
+/* Newsletter form styles */
+footer input[type="email"] {
+  width: 80%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  border: none;
+}
+
+footer button {
+  width: 80%;
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  background-color: #009688;
+  color: #fff;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+footer button:hover {
+  background-color: #00796b;
 }
