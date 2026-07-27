@@ -11,19 +11,17 @@
 <!-- Google Fonts -->
 <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Open+Sans&display=swap" rel="stylesheet"/>
 <style>
-/* Reset some default styles */
+/* Reset styles */
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
-/* Existing styles from your CSS (including the new darken effect) */
+/* Body styles */
 body {
   font-family: 'Open Sans', sans-serif;
   line-height: 1.6;
-  margin: 0;
-  padding: 0;
   background-color: #f8fbf8;
   color: black;
 }
@@ -32,11 +30,10 @@ body {
 header {
   background-color: #fff;
   padding: 10px 20px;
-  position: relative;
   box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
   z-index: 10;
 }
-
 .nav-container {
   display: flex;
   align-items: center;
@@ -44,58 +41,42 @@ header {
   max-width: 1200px;
   margin: 0 auto;
 }
-
-/* Logo styles */
 .site-logo {
   height: 60px;
-  width: auto;
 }
-
-/* Darken and fade effect for images with class 'darken-img' */
 img.darken-img {
-  /* Initial state: slightly bright, with transition */
   filter: brightness(70%);
   opacity: 0.9;
   transition: filter 1s ease, opacity 1s ease;
 }
-
 img.darken-img:hover {
-  /* Darker on hover to show dark fade effect */
   filter: brightness(50%);
   opacity: 0.8;
 }
-
-/* Navigation styles */
 nav {
-  /* For desktop */
   position: relative;
 }
-
 .nav-links {
   list-style: none;
   display: flex;
   gap: 23px;
   align-items: center;
 }
-
 .nav-links li a {
   text-decoration: none;
   color: green;
   font-weight: 700;
 }
-
 .nav-links li a:hover {
   color: lightseagreen;
 }
-
-/* Hamburger menu for mobile */
 .menu-toggle {
   display: none;
   font-size: 24px;
   cursor: pointer;
 }
 
-/* Responsive styles */
+/* Responsive menu */
 @media (max-width: 768px) {
   .nav-links {
     position: absolute;
@@ -116,40 +97,39 @@ nav {
   }
 }
 
-/* Hero background slideshow styles */
+/* Hero section with background slideshow, overlay, blur, and darkening */
 .hero {
-  height: 100vh;
+  height: 65vh; /* Increased height for better image visibility */
   background-size: cover;
   background-position: center;
   animation: slideBackground 14s infinite;
   display: flex;
-  align-items: center;
+  align-items: flex-end; /* align content to the bottom */
   justify-content: center;
   position: relative;
   color: #fff;
   text-align: center;
   padding: 0 20px;
+  padding-bottom: 30px; /* space at the bottom */
+  transition: background-image 1s ease;
 }
-
-@keyframes slideBackground {
-  0% { background-image: url('jpg.1.jpg'); }
-  50% { background-image: url('jpg.3.jpg'); }
-  100% { background-image: url('jpg.1.jpg'); }
-}
-
-.hero::after {
+.hero::before {
   content: "";
   position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7); /* darker overlay for contrast */
+  backdrop-filter: blur(3px); /* blurry background */
+  -webkit-backdrop-filter: blur(3px);
   z-index: 1;
 }
-
 .hero > .hero-overlay {
   position: relative;
   z-index: 2;
   max-width: 800px;
+  margin-bottom: 20px;
 }
 
 /* Footer styles */
@@ -162,8 +142,6 @@ footer {
   flex-direction: column;
   align-items: center;
 }
-
-/* Fix footer internal layout */
 footer div {
   display: flex;
   flex-wrap: wrap;
@@ -171,31 +149,23 @@ footer div {
   width: 100%;
   margin-bottom: 20px;
 }
-
-/* Footer column styles */
 footer h3 {
   margin-bottom: 10px;
 }
-
 footer p, footer li {
   margin-bottom: 8px;
 }
-
 footer ul {
   list-style: none;
   padding: 0;
 }
-
 footer a {
   color: #fff;
   text-decoration: none;
 }
-
 footer a:hover {
   text-decoration: underline;
 }
-
-/* Newsletter form styles */
 footer input[type="email"] {
   width: 100%;
   padding: 8px;
@@ -203,30 +173,72 @@ footer input[type="email"] {
   border-radius: 4px;
   border: 1px solid #ccc;
 }
-
 footer button {
   width: 100%;
   padding: 8px;
   border-radius: 4px;
-  background-color: #009688; /* or your var(--deep-teal) if defined */
+  background-color: #009688;
   color: #fff;
   cursor: pointer;
   border: none;
 }
-
 footer button:hover {
   background-color: #00796b;
 }
-
-/* Optional: Add some spacing below hero */
 section {
   margin-top: 0;
 }
 
-/* Blur effect for images with class 'blurry' */
-img.blurry {
-  filter: blur(4px);
-  transition: filter 0.3s ease;
+/* Skills grid with darker background and 3x2 layout */
+#skills {
+  background-color: #555; /* Dark grey background */
+  padding: 40px 20px;
+}
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 columns */
+  grid-template-rows: repeat(2, auto);   /* 2 rows */
+  gap: 20px;
+  padding: 20px;
+}
+/* Card styles with golden glow */
+.card {
+  background: #fff;
+  border-radius: 10px;
+  padding: 20px;
+  height: 250px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+}
+.card:hover {
+  box-shadow: 0 0 20px 4px rgba(255, 215, 0, 0.8);
+  transform: translateY(-5px);
+}
+.card .card-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+.card .card-details {
+  opacity: 0;
+  max-height: 0;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  font-size: 0.95em;
+  text-align: center;
+}
+.card:hover .card-details {
+  opacity: 1;
+  max-height: 600px;
+}
+.card i {
+  font-size: 2em;
+  color: #009688;
+  margin-bottom: 10px;
 }
 </style>
 </head>
@@ -236,7 +248,6 @@ img.blurry {
 <header>
   <div class="nav-container">
     <div class="logo">
-      <!-- Add class 'darken-img' here to demonstrate effect -->
       <img src="logo.jpg" alt="Your Logo" class="site-logo darken-img" />
     </div>
     <nav>
@@ -251,19 +262,81 @@ img.blurry {
   </div>
 </header>
 
-<!-- Hero section with background slideshow -->
-<section class="hero">
+<!-- Hero background slideshow with overlay and dark blur effect -->
+<section class="hero" id="hero">
   <div class="hero-overlay">
     <h1>Our Path to Wellness Starts Here</h1>
     <p>Expert Physiotherapy & Sports Injury Recovery</p>
   </div>
 </section>
 
-<!-- Example other images -->
-<!-- Add class 'darken-img' to any other images you want to darken -->
-<!--
-<img src="another-image.jpg" class="darken-img" alt="Darkened Image" />
--->
+<!-- Skills in 3x2 grid with darker background -->
+<section id="skills">
+  <h2 style="text-align:center; margin-top:40px;">Skills Acquired</h2>
+  <p style="text-align:center;">Building a website is a comprehensive process that allows you to develop a variety of valuable skills, including:</p>
+  <div class="cards">
+    <!-- 6 Skills to fill 3x2 grid -->
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-code"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">HTML & Semantic Markup</h3>
+        <p>Structuring web pages with HTML tags and semantic elements for better accessibility.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-paint-brush"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">CSS & Styling</h3>
+        <p>Designing layouts with CSS for visual appeal and responsiveness.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-mobile-alt"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">Responsive Design</h3>
+        <p>Making your website adaptable to different devices.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-lightbulb"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">JavaScript & Interactivity</h3>
+        <p>Adding dynamic features and interactivity.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-tools"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">Frontend Frameworks</h3>
+        <p>Utilizing tools like Bootstrap and React.</p>
+      </div>
+    </div>
+    <div class="card">
+      <div class="card-content">
+        <i class="fas fa-user-shield"></i>
+      </div>
+      <div class="card-details">
+        <h3 style="margin-bottom:10px;">UI/UX Principles</h3>
+        <p>Designing user-friendly interfaces.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Projects/Portfolio -->
+<section id="projects" style="background-color:#f1f1f1;">
+  <!-- Content can go here -->
+</section>
 
 <!-- Footer -->
 <footer>
@@ -279,7 +352,7 @@ img.blurry {
   </div>
 </footer>
 
-<!-- JavaScript for menu toggle -->
+<!-- Scripts -->
 <script>
 const menuToggle = document.getElementById('menu-toggle');
 const navLinks = document.getElementById('nav-links');
@@ -287,7 +360,19 @@ const navLinks = document.getElementById('nav-links');
 menuToggle.addEventListener('click', () => {
   navLinks.classList.toggle('active');
 });
-</script>
 
+// Background slideshow
+const heroSection = document.getElementById('hero');
+const images = ['jpg.1.jpg', 'jpg.3.jpg'];
+let currentImageIndex = 0;
+
+function changeBackground() {
+  heroSection.style.backgroundImage = 'url(' + images[currentImageIndex] + ')';
+  currentImageIndex = (currentImageIndex + 1) % images.length;
+}
+
+changeBackground(); // Set initial background
+setInterval(changeBackground, 14000); // Change every 14 seconds
+</script>
 </body>
 </html>
