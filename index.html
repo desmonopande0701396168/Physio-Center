@@ -191,7 +191,7 @@ section {
 
 /* Skills grid with darker background and 3x2 layout */
 #skills {
-  background-color: #555; /* Dark grey background */
+  background-color:burlywood; /* Dark grey background */
   padding: 40px 20px;
 }
 .cards {
@@ -201,21 +201,23 @@ section {
   gap: 20px;
   padding: 20px;
 }
-/* Card styles with golden glow */
+/* Smaller Card styles */
 .card {
-  background: #fff;
+  background: blur;
   border-radius: 10px;
-  padding: 20px;
-  height: 250px;
+  padding: 10px; /* Reduced padding for smaller size */
+  height: 180px; /* Reduced height */
+  width: 100%; /* Ensure responsiveness within grid */
   box-shadow: 0 4px 12px rgba(0,0,0,0.1);
   cursor: pointer;
   display: flex;
   flex-direction: column;
   transition: all 0.3s ease;
+  font-size: 0.9em; /* Slightly smaller font size */
 }
 .card:hover {
   box-shadow: 0 0 20px 4px rgba(255, 215, 0, 0.8);
-  transform: translateY(-5px);
+  transform: translateY(-3px);
 }
 .card .card-content {
   display: flex;
@@ -228,17 +230,17 @@ section {
   max-height: 0;
   overflow: hidden;
   transition: all 0.3s ease;
-  font-size: 0.95em;
+  font-size: 0.85em;
   text-align: center;
 }
 .card:hover .card-details {
   opacity: 1;
-  max-height: 600px;
+  max-height: 800px;
 }
 .card i {
-  font-size: 2em;
+  font-size: 1.8em; /* Slightly smaller icon size */
   color: #009688;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
 }
 </style>
 </head>
